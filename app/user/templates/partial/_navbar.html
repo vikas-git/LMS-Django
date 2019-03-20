@@ -1,0 +1,59 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="">
+            <a class="navbar-brand" href="javascript:void(0)">{{ ROLE_NAME }} Dashboard</a>
+            <ul class="nav navbar-right top-nav user-list-icon">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i> 
+                        <span class="hidden-xs">{{ USER_NAME }} </span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{% url 'logout' %}"><i class="fa fa-fw fa-sign-out"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- Nav Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="">
+            <ul class="nav navbar-nav side-nav" id="sidebar">
+                <li class="text-right visible-xs">
+                    <a href="javascript:void(0);"><i class="fa fa-fw fa-arrow-left close-sidebar"></i></a>
+                </li>
+
+                {% if USER_ROLE == 1 %}
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-fw fa-list"></i> My Feedback
+                        </a>
+                    </li>
+                {% elif USER_ROLE == 2 %}
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-fw fa-list"></i> My Feedback
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'student-list' %}">
+                            <i class="fa fa-fw fa-list"></i> Student Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'faculty-list' %}">
+                            <i class="fa fa-fw fa-list"></i> Faculty Management
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'books-list' %}">
+                            <i class="fa fa-fw fa-list"></i> Books Management
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>

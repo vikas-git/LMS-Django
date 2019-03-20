@@ -1,0 +1,35 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+}
+.navbar {
+    margin-bottom: 0;
+}
+.banner {
+    height: 100vh;
+    background: url('https://cpb-eu-w2.wpmucdn.com/blogs.bristol.ac.uk/dist/3/341/files/2016/03/cropped-Bristol-WML-2.jpg') no-repeat center center;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    background: #f8f8f8;
+    border-top: 1px solid #e7e7e7;
+    padding: 15px 0;
+    width: 100%;
+}
+.footer p {
+    margin-bottom: 0;
+}
+.error{
+    color:red;
+}

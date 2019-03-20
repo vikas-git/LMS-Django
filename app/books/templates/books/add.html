@@ -1,0 +1,69 @@
+{% extends "partial/layout.html" %}
+{% block set_title %} - Add Book {% endblock set_title %}
+
+{% block page_heading %}Add Book{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="btn-group pull-right" role="group" aria-label="Page Action">
+            <a href="{% url 'books-list' %}" class="btn btn-primary" title="Back">Back</a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <form role="form" method="post" id="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Name*</label>
+                    <input class="form-control" type="text" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Author*</label>
+                    <input class="form-control" type="text" name="author">
+                </div>
+                <div class="form-group">
+                    <label>Publisher*</label>
+                    <input class="form-control" type="text" name="publisher">
+                </div>
+                <div class="form-group">
+                    <label>Price*</label>
+                    <input class="form-control" type="text" name="price">
+                </div>
+                <div class="form-group">
+                    <label>Quantity*</label>
+                    <input class="form-control" type="text" name="quantity">
+                </div>
+                <input type="submit" class="btn btn-default" value='Submit'>
+            </form>
+        </div>
+    </div>
+{% endblock page_content %}
+
+
+{% block javascript %}
+    <script>
+        $(function () {
+            $("#form").validate({
+                rules: {
+                    name: "required",
+                    author: "required",
+                    publisher: "required",
+                    price: {
+                        required: true,
+                        number: true,
+                        minlength: 1,
+                        maxlength: 4,
+                    },
+                    quantity: {
+                        required: true,
+                        number: true,
+                        minlength: 1,
+                        maxlength: 4,
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock javascript %}

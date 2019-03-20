@@ -1,0 +1,81 @@
+{% extends "partial/layout.html" %}
+{% block set_title %} - Create New Faculty {% endblock set_title %}
+
+{% block page_heading %}Create New Faculty{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="btn-group pull-right" role="group" aria-label="Page Action">
+            <a href="{% url 'faculty-list' %}" class="btn btn-primary" title="Back">Back</a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <form role="form" method="post" id="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Name*</label>
+                    <input class="form-control" type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email*</label>
+                    <input class="form-control" type="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label>Password*</label>
+                    <input class="form-control" type="password" id="password" name="password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password*</label>
+                    <input class="form-control" type="password" name="confirm_password">
+                </div>
+                <div class="form-group">
+                    <label>Mobile*</label>
+                    <input class="form-control" type="text" name="mobile">
+                </div>
+                <input type="submit" class="btn btn-default" value='Submit'>
+            </form>
+        </div>
+    </div>
+{% endblock page_content %}
+
+
+{% block javascript %}
+    <script>
+        $(function () {
+            $("#form").validate({
+                rules: {
+                    name: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 4
+                    },
+                    confirm_password: {
+                        required: true,
+                        minlength: 4,
+                        equalTo: '#password'
+                    },
+                    mobile: {
+                        required: true,
+                        number: true,
+                        minlength: 10,
+                        maxlength: 10,
+                        }
+                },
+                messages: {
+                    name: "Please specify your name",
+                    email: {
+                        required: "We need your email address to contact you",
+                        email: "Your email address must be in the format of name@domain.com"
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock javascript %}

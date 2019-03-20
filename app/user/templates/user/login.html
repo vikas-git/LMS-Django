@@ -1,0 +1,38 @@
+{% extends "partial/guest_layout.html" %}
+{% block set_title %} - Login {% endblock set_title %}
+
+{% block page_content %}
+<div class="container" style="margin-top:50px;">
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
+            <div class="panel panel-default login-panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Login</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form" method="POST">
+                        {% csrf_token %}
+                        <fieldset>
+                            {% include "partial/msg-temp.html" %}
+                            
+                            {% for field in form %}
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa {% cycle 'fa-envelope' 'fa-lock' %}"></i></div>
+                                        {{ field }}
+                                    </div>
+                                    <span style="color: red;">{{ field.errors }}</span>
+                                </div>
+                            {% endfor %}
+
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
+                            
+                            
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
